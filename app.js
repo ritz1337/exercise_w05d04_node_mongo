@@ -14,9 +14,31 @@ MongoClient.connect(url, function (err, db) {
   } else {
     //HURRAY!! We are connected. :)
     console.log('Connection established to', url);
+    var collection = db.collection('people');
+
+    // var user1 = {name: 'kora', age: '25'}
+    // var user1update = {name: 'kora'}, {$set: {age: '26'}}
+
+    // collection.insert(user1, function(err, result) {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+    //   }
+    //   db.close();
+    // });
+    collection.update({name: 'kora'}, {$set: {age: '26'}}, function(err, numUpdated) {
+      if (err) {
+        console.log(err);
+      } else if (numUpdated) {
+        console.log('updated successfully', numUpdated)
+      } else {
+        console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+      }
+      db.close();
+    });
   }
 });
-
 
 
 
