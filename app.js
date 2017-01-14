@@ -19,6 +19,8 @@ MongoClient.connect(url, function (err, db) {
     // var user1 = {name: 'kora', age: '25'}
     // var user1update = {name: 'kora'}, {$set: {age: '26'}}
 
+    // document insertion
+
     // collection.insert(user1, function(err, result) {
     //   if (err) {
     //     console.log(err);
@@ -27,6 +29,8 @@ MongoClient.connect(url, function (err, db) {
     //   }
     //   db.close();
     // });
+
+    // document updating
     collection.update({name: 'kora'}, {$set: {age: '26'}}, function(err, numUpdated) {
       if (err) {
         console.log(err);
